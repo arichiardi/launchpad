@@ -14,6 +14,9 @@
   start-of-line per-process prefix in the output
 - Support `:launchpad/jvm-opts`: the option is, same as the built-in
   one, used for injecting JVM options to the clojure process.
+- Introduce `--execute` (or `{:launchpad/options {:execute false}}`) and
+  functionality that can launch the first configured `:exec-fn` (and
+  relative `:exec-args`).
 
 ## Fixed
 
