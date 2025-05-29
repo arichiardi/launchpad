@@ -539,6 +539,7 @@
    (fn [ctx]
      (let [working-dir  (io/file working-dir)
            proc-builder (doto (ProcessBuilder. (map str cmd))
+                          (.inheritIO)
                           (.directory working-dir))
            _ (.putAll (.environment proc-builder) (or env (:env ctx)))
            color (mod (hash (or prefix (first cmd))) 8)
