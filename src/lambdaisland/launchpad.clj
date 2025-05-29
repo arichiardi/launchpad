@@ -532,7 +532,7 @@
    ((run-process opts) ctx))
   ([{:keys [cmd prefix working-dir
             background? timeout-ms check-exit-code? env
-            color show-command?]
+            show-command?]
      :or {working-dir "."
           check-exit-code? true
           show-command? true}}]
@@ -557,9 +557,8 @@
                       (.waitFor process timeout-ms TimeUnit/MILLISECONDS)
                       (.waitFor process))]
            (when (and check-exit-code? (not= 0 exit))
-             (do
-               (println (str prefix) "Exited with non-zero exit code: " exit)
-               (System/exit exit)))
+             (println prefix "Exited with non-zero exit code: " exit)
+             (System/exit exit))
            ctx))))))
 
 (defn start-clojure-process [ctx]
